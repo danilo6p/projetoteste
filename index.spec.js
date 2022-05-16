@@ -1,10 +1,11 @@
-const request = require("superteste")
+const request = require("supertest")
 const app = require('./server')
 
-describe ('Sample Test', () => {
+describe ('Test My app server', () => {
 
-    it('should test that true === true', () =>{
-        const result = true
-        expect(result).toBe(true)
+    it('should get main route', async () =>{
+       const res = await request(app).get('/')
+       
+       expect(res.body).toHaveProperty('message')
     })
 })
